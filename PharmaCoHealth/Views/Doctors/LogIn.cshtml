@@ -1,0 +1,31 @@
+﻿@model PharmaCoHealth.ViewModel.DoctorLogInViewModel
+@{
+    ViewBag.Title = "LogIn";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+    var msg = ViewBag.NoDocotr;
+}
+
+<h2>LogIn</h2>
+
+@using (Html.BeginForm("LogIn", "Doctors"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+
+    </div>
+    <button type="submit" class="btn btn-primary">LogIn</button>
+    <div><br><br></div>
+}
+
+@if (msg != null)
+{
+    <p class="text-danger">Incorrect Email or Password</p>
+    <p class="text-danger">Try Again !!!</p>
+    @Html.ActionLink("Not Registered ?", "Create")
+}
+
